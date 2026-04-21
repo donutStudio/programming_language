@@ -1,0 +1,3 @@
+This is a ground up rewrite of a project I was working on before! 
+
+Currently this project is basically just some C++ that builds a structure (somewhat?) resembling an AST. I am currently working on just having basic expression support. The previous version of this project was a prototype interpreter I was making in python, found at [https://github.com/donutStudio/epicProgramminLanguage](https://github.com/donutStudio/epicProgramminLanguage)
