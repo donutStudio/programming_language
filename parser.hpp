@@ -4,7 +4,6 @@
 
 #include <string>
 #include <unordered_map>
-#include <string>
 
 extern std::unordered_map<std::string, arithmetic_operator> arithmetic_operator_key;
 
