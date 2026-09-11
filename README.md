@@ -1,6 +1,11 @@
 This is a ground up rewrite of a project I was working on before.
 
-Currently the project has a small expression parser that builds a real AST-like structure for:
+The `main` branch is currently the presentation-friendly version of the parser.
+It keeps the code small and easy to step through in front of an audience.
+
+The more complete implementation was saved on the `codex/full-expression-system` branch with the commit message `idk sahur`.
+
+This version has a small expression parser that builds a simple AST-like structure for:
 
 - integer literals
 - boolean literals
@@ -57,9 +62,8 @@ The program prints the parsed tree, which is useful for verifying precedence and
 
 ## Good next steps
 
-The next layers that usually fit on top of this are:
+The next layers that usually fit on top of this presentation version are:
 
-- assignment expressions
 - function call expressions
 - member access
 - statement parsing
