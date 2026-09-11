@@ -18,7 +18,11 @@ namespace {
             {"!ready || count >= 10", "((!ready) || (count >= 10))"},
             {"value == 3 && other != 4", "((value == 3) && (other != 4))"},
             {"-10 + score", "((-10) + score)"},
-            {"true && false || enabled", "((true && false) || enabled)"}
+            {"true && false || enabled", "((true && false) || enabled)"},
+            {"value = 3", "(value = 3)"},
+            {"result = left + right * 2", "(result = (left + (right * 2)))"},
+            {"a = b = 3", "(a = (b = 3))"},
+            {"flag = ready || count >= 10", "(flag = (ready || (count >= 10)))"}
         };
 
         bool all_passed = true;
@@ -46,7 +50,9 @@ namespace {
             "1 +",
             "&& value",
             "(1 + 2",
-            "value )"
+            "value )",
+            "1 = 2",
+            "(a + b) = 3"
         };
 
         for (const std::string& source : invalid_tests) {

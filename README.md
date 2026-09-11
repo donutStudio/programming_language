@@ -5,12 +5,15 @@ Currently the project has a small expression parser that builds a real AST-like 
 - integer literals
 - boolean literals
 - identifiers
+- assignment expressions
 - parentheses
 - unary `!` and unary `-`
 - `*` and `/`
 - `+` and `-`
 - comparison and equality operators
 - `&&` and `||`
+
+Assignment currently supports `identifier = expression` and is parsed as right-associative, so `a = b = 3` becomes `a = (b = 3)`.
 
 The previous version of this project was a prototype interpreter I was making in python, found at [https://github.com/donutStudio/epicProgramminLanguage](https://github.com/donutStudio/epicProgramminLanguage)
 

@@ -10,9 +10,10 @@
 enum arithmetic_operator {ADD, SUBTRACT, MULTIPLY, DIVIDE};
 enum comparison_operator {EQUAL, NOT_EQUAL, LESS, GREATER_EQUAL, GREATER, LESS_EQUAL};
 enum logical_operator {AND, OR, NOT};
+enum assignment_operator {ASSIGN};
 
 using operand = std::variant<literal, identifier>;
-using operation = std::variant<arithmetic_operator, comparison_operator, logical_operator>;
+using operation = std::variant<arithmetic_operator, comparison_operator, logical_operator, assignment_operator>;
 
 class expression {
     public:
@@ -24,6 +25,7 @@ class expression {
         bool is_operand() const;
         bool is_unary() const;
         bool is_binary() const;
+        bool is_assignable() const;
 
         const operand& get_operand() const;
         const expression& get_left_operand() const;

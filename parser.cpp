@@ -45,7 +45,7 @@ namespace {
             }
 
             expression parse_expression() {
-                expression result = parse_logical_or_expression();
+                expression result = parse_assignment_expression();
 
                 if (!is_at_end()) {
                     throw std::runtime_error("Unexpected token: " + peek().text);
@@ -57,6 +57,20 @@ namespace {
         private:
             const std::vector<token>& tokens;
             std::size_t position;
+
+            expression parse_assignment_expression() {
+                expression left_expression = parse_logical_or_expression();
+
+                if (!match_symbol("=")) {
+                    return left_expression;
+                }
+
+                if (!left_expression.is_assignable()) {
+                    throw std::runtime_error("Left side of assignment must be an identifier");
+                }
+
+                return expression(left_expression, ASSIGN, parse_assignment_expression());
+            }
 
             expression parse_logical_or_expression() {
                 expression left_expression = parse_logical_and_expression();
@@ -265,7 +279,7 @@ namespace {
                 }
             }
 
-            if (character == '(' || character == ')' || character == '+' || character == '-' || character == '*' || character == '/' || character == '<' || character == '>' || character == '!') {
+            if (character == '(' || character == ')' || character == '+' || character == '-' || character == '*' || character == '/' || character == '<' || character == '>' || character == '!' || character == '=') {
                 tokens.push_back({SYMBOL, std::string(1, character)});
                 position++;
                 continue;

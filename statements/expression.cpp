@@ -34,6 +34,10 @@ namespace {
             }
         }
 
+        if (std::holds_alternative<assignment_operator>(operation_value)) {
+            return "=";
+        }
+
         switch (std::get<logical_operator>(operation_value)) {
             case AND:
                 return "&&";
@@ -88,6 +92,14 @@ bool expression::is_unary() const {
 
 bool expression::is_binary() const {
     return std::holds_alternative<binary_expression>(value);
+}
+
+bool expression::is_assignable() const {
+    if (!is_operand()) {
+        return false;
+    }
+
+    return std::holds_alternative<identifier>(get_operand());
 }
 
 const operand& expression::get_operand() const {
